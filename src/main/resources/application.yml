@@ -1,0 +1,20 @@
+server:
+ port: 8083
+
+spring:
+ application:
+  name: DAMCO-API_GATWAY
+ cloud:
+  gateway:
+   routes:
+    - id: DAMCO-USER-SERVICE
+      uri: http://localhost:8081/
+      predicates:
+       - Path=/user/**,/swagger-ui/#/**
+
+eureka:
+ client:
+  serviceUrl:
+   defaultZone: http://localhost:8761/eureka
+ instance:
+  preferIpAddress: true
